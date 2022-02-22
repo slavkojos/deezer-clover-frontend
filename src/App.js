@@ -1,16 +1,5 @@
 import React from 'react';
-import {
-  ChakraProvider,
-  Box,
-  Text,
-  Link,
-  VStack,
-  Code,
-  Grid,
-  theme,
-  extendTheme,
-} from '@chakra-ui/react';
-import { ColorModeSwitcher } from './ColorModeSwitcher';
+import { ChakraProvider, extendTheme } from '@chakra-ui/react';
 import Home from './pages/Home';
 const config = {
   initialColorMode: 'dark',
