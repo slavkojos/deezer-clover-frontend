@@ -8,33 +8,30 @@ import {
   Code,
   Grid,
   theme,
+  extendTheme,
 } from '@chakra-ui/react';
 import { ColorModeSwitcher } from './ColorModeSwitcher';
-import { Logo } from './Logo';
-
+import Home from './pages/Home';
+const config = {
+  initialColorMode: 'dark',
+  useSystemColorMode: false,
+};
+const customTheme = extendTheme({
+  semanticTokens: {
+    colors: {
+      error: 'red.500',
+      text: {
+        default: 'gray.900',
+        _dark: 'gray.50',
+      },
+    },
+  },
+  config,
+});
 function App() {
   return (
-    <ChakraProvider theme={theme}>
-      <Box textAlign="center" fontSize="xl">
-        <Grid minH="100vh" p={3}>
-          <ColorModeSwitcher justifySelf="flex-end" />
-          <VStack spacing={8}>
-            <Logo h="40vmin" pointerEvents="none" />
-            <Text>
-              Edit <Code fontSize="xl">src/App.js</Code> and save to reload.
-            </Text>
-            <Link
-              color="teal.500"
-              href="https://chakra-ui.com"
-              fontSize="2xl"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Learn Chakra
-            </Link>
-          </VStack>
-        </Grid>
-      </Box>
+    <ChakraProvider theme={customTheme}>
+      <Home />
     </ChakraProvider>
   );
 }
