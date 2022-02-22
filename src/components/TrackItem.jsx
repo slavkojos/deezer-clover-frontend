@@ -15,6 +15,11 @@ export default function TrackItem({ track, onOpen, index, setSelectedTrack }) {
         setSelectedTrack(index);
         onOpen();
       }}
+      transition=".2s ease"
+      cursor="pointer"
+      _hover={{
+        backgroundColor: 'hover',
+      }}
     >
       <Flex align="center">
         <Image src={track.album.cover_small} mr={4} />

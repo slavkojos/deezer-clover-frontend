@@ -24,6 +24,10 @@ const customTheme = extendTheme({
         default: 'gray.900',
         _dark: 'gray.50',
       },
+      hover: {
+        default: 'gray.300',
+        _dark: 'gray.700',
+      },
     },
   },
   config,
