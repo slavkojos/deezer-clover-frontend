@@ -51,13 +51,15 @@ export default function Home() {
             placeholder="Sort by duration"
             size="lg"
             w="25%"
-            onChange={e => handleSort(e)}
+            onChange={handleSort}
           >
             <option value="ascending">From shortest to longest</option>
             <option value="descending">From longest to shortest</option>
           </Select>
         </Flex>
         <Flex direction="column" width="100%" align="center">
+          {loading === 'failed' && <h2>Error loading chart</h2>}
+          {loading === 'error' && <h2>Error from api</h2>}
           {loading === 'loading' && <Spinner size="xl" />}
           {loading === 'loaded' &&
             tracks.map((track, index) => (

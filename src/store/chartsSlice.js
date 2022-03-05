@@ -5,16 +5,16 @@ const apiUrl = 'https://api.deezer.com/chart';
 
 export const fetchTopTracks = createAsyncThunk(
   'tracks/fetchAll',
-  async thunkApi => {
+  async (thunkAPI, { rejectWithValue }) => {
     try {
       const response = await axios.get(`${corsProxy}${apiUrl}`);
       if (response.status === 200) {
-        const tracks = response.data.tracks.data;
+        const tracks = response.data;
         return tracks;
       }
       throw new Error(response.statusText);
     } catch (error) {
-      console.error(error);
+      return rejectWithValue(error);
     }
   }
 );
@@ -46,7 +46,7 @@ export const topTracksSlice = createSlice({
         return;
       }
       state.loading = 'loaded';
-      state.tracks = action.payload;
+      state.tracks = action.payload.tracks.data;
     },
     [fetchTopTracks.pending]: (state, action) => {
       state.tracks = [];
